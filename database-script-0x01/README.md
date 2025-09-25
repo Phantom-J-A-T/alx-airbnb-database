@@ -1,0 +1,11 @@
+-- 1. User Table
+-- Index for faster email lookups
+-- 2. Location Table
+-- 3. Property Table
+-- Indexes for common queries: location and price
+-- 4. Booking Table
+-- Index for faster lookups by user and property
+-- 5. Payment Table
+-- Index for booking lookup
+-- 6. Review Table
+-- Index for booking lookup
