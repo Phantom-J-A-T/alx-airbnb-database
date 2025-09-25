@@ -1,3 +1,5 @@
+This is the Schema for the Database
+
 -- 1. User Table
 -- Index for faster email lookups
 -- 2. Location Table
