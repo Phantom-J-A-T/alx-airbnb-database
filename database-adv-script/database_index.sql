@@ -13,3 +13,6 @@ CREATE INDEX idx_bookings_start_date ON bookings(start_date);
 -- High-usage columns: id (PK), name (search), location (filtering)
 CREATE INDEX idx_properties_name ON properties(name);
 CREATE INDEX idx_properties_location ON properties(location);
+
+EXPLAIN ANALYZE
+SELECT * FROM users WHERE name = 'Alice';
