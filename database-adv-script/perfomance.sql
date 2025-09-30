@@ -1,4 +1,5 @@
 -- Initial Query: Retrieve all bookings with user, property, and payment details
+-- Filter: Only bookings after Jan 1, 2024 and payments marked as 'completed'
 SELECT 
     b.id AS booking_id,
     b.start_date,
@@ -17,6 +18,8 @@ FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 JOIN payments pay ON b.id = pay.booking_id
+WHERE b.start_date >= '2024-01-01'
+  AND pay.status = 'completed'
 ORDER BY b.start_date DESC;
 
 ------------------------------------------------------------
@@ -42,12 +45,14 @@ FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 JOIN payments pay ON b.id = pay.booking_id
+WHERE b.start_date >= '2024-01-01'
+  AND pay.status = 'completed'
 ORDER BY b.start_date DESC;
 
 ------------------------------------------------------------
 
 -- Refactored Query: Reduce execution time
--- Only include necessary columns and use LEFT JOIN for optional tables
+-- Only select needed columns and use LEFT JOIN for optional tables
 SELECT 
     b.id AS booking_id,
     b.start_date,
@@ -59,4 +64,6 @@ FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 LEFT JOIN payments pay ON b.id = pay.booking_id
+WHERE b.start_date >= '2024-01-01'
+  AND (pay.status = 'completed' OR pay.status IS NULL)
 ORDER BY b.start_date DESC;
