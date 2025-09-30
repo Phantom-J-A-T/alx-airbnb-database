@@ -8,7 +8,8 @@ SELECT
     b.end_date
 FROM bookings b
 INNER JOIN users u 
-    ON b.user_id = u.id;
+    ON b.user_id = u.id
+ORDER BY b.id;
 
 ---------------------------------------------------------
 
@@ -22,7 +23,8 @@ SELECT
     r.rating
 FROM properties p
 LEFT JOIN reviews r 
-    ON p.id = r.property_id;
+    ON p.id = r.property_id
+ORDER BY p.id, r.id;
 
 ---------------------------------------------------------
 
@@ -37,4 +39,5 @@ SELECT
     b.end_date
 FROM users u
 FULL OUTER JOIN bookings b 
-    ON u.id = b.user_id;
+    ON u.id = b.user_id
+ORDER BY u.id, b.id;
